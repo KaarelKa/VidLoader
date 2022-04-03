@@ -23,9 +23,9 @@ private struct RegexStrings {
     static let mediaSection: String = {
         let mediaSectionKey = "#EXT-X-MAP"
         
-        return "\(mediaSectionKey)(?!https)[\\S\\s\(newLine)]*?\(uri)([^\(newLine),\"]+)"
+        return "\(mediaSectionKey)(?!http)[\\S\\s\(newLine)]*?\(uri)([^\(newLine),\"]+)"
     }()
-    static let relativeChunks = "(?<=\(newLine))(?!#|https)[\\S\\s]*?(?=\(newLine))"
+    static let relativeChunks = "(?<=\(newLine))(?!#|http)[\\S\\s]*?(?=\(newLine))"
 }
 
 protocol PlaylistParser {

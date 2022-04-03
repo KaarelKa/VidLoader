@@ -16,7 +16,7 @@ protocol SchemeHandleable {
 enum SchemeType: String {
     case key = "vidloader-encryption-key"
     case custom = "vidloader-new-scheme"
-    case original = "https"
+    case original = "http"
 }
 
 struct SchemeHandler: SchemeHandleable {
