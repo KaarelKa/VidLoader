@@ -127,8 +127,11 @@ extension DownloadSession: Session {
     func suspendAllTasks() {
         allTasks {
             $0.forEach {
-                if $0.item?.isPaused == true { return }
-                $0.suspend()
+                guard let item = $0.item else {
+                    return
+                }
+                if item.isPaused == true { return }
+                self.suspendTask(identifier: item.identifier)
             }
         }
     }
@@ -148,8 +151,10 @@ extension DownloadSession: Session {
     func resumeAllTasks() {
         allTasks {
             $0.forEach {
-                if $0.item?.isPaused == true { return }
-                return $0.resume()
+                guard let item = $0.item else {
+                    return
+                }
+                self.resumeTask(identifier: item.identifier)
             }
         }
     }
