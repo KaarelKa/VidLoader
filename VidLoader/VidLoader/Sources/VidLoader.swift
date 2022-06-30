@@ -9,7 +9,7 @@
 import AVFoundation
 
 typealias Completion<T> = (T) -> Void
-
+// random test comment
 public protocol VidLoadable {
 
     /// Add observer that will be called when the state of an item will change
