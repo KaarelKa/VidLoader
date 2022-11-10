@@ -49,7 +49,7 @@ final class ResourceLoaderTests: XCTestCase {
         let url = URL.mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         
         // WHEN
         let requestShouldWait = resourceLoader.resourceLoader(avResourceLoader,
@@ -75,7 +75,7 @@ final class ResourceLoaderTests: XCTestCase {
         let url = URL.mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         
         // WHEN
         let requestShouldWait = resourceLoader.resourceLoader(avResourceLoader,
@@ -101,7 +101,7 @@ final class ResourceLoaderTests: XCTestCase {
         let url = URL.mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         
         // WHEN
         let requestShouldWait = resourceLoader.resourceLoader(avResourceLoader,
@@ -129,7 +129,7 @@ final class ResourceLoaderTests: XCTestCase {
         let url = URL.mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         let _ = resourceLoader.resourceLoader(avResourceLoader,
                                               shouldWaitForLoadingOfRequestedResource: loadingRequest)
         
@@ -162,7 +162,7 @@ final class ResourceLoaderTests: XCTestCase {
         requestable.dataTaskStub = .mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         let _ = resourceLoader.resourceLoader(avResourceLoader,
                                               shouldWaitForLoadingOfRequestedResource: loadingRequest)
         
@@ -194,7 +194,7 @@ final class ResourceLoaderTests: XCTestCase {
         requestable.dataTaskStub = .mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         let _ = resourceLoader.resourceLoader(avResourceLoader,
                                               shouldWaitForLoadingOfRequestedResource: loadingRequest)
         
@@ -228,7 +228,7 @@ final class ResourceLoaderTests: XCTestCase {
         requestable.dataTaskStub = .mock()
         let avResourceLoader = AVAssetResourceLoader.mock(url: url)
         let requestInfo = AVAssetResourceLoadingRequest.mockRequestInfo(infoURL: url)
-        let loadingRequest = AVAssetResourceLoadingRequest.mock(with: avResourceLoader, requestInfo: requestInfo)
+        let loadingRequest = AVAssetResourceLoadingRequest.mockWithCustomSetup(with: avResourceLoader, requestInfo: requestInfo)
         let _ = resourceLoader.resourceLoader(avResourceLoader,
                                               shouldWaitForLoadingOfRequestedResource: loadingRequest)
         
