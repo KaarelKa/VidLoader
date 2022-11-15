@@ -7,13 +7,14 @@
 //
 
 @testable import VidLoader
+import Foundation
 
 struct MockMasterParser: MasterParser {
-    
-    var adjustFuncCheck = FuncCheck<Data>()
+   
+    var adjustFuncCheck = FuncCheck<(Data, URL)>()
     var adjustStub: Result<Data, M3U8Error> = .success(.mock())
-    func adjust(data: Data) -> Result<Data, M3U8Error> {
-        adjustFuncCheck.call(data)
+    func adjust(data: Data, baseURL: URL) -> Result<Data, M3U8Error> {
+        adjustFuncCheck.call((data, baseURL))
         return adjustStub
     }
 }

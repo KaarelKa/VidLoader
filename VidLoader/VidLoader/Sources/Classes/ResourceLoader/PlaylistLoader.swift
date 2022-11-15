@@ -39,12 +39,11 @@ final class PlaylistLoader: PlaylistLoadable {
             self?.addStreamResource(streamResource, identifier: identifier)
             completion(.success(()))
         }
-
+        
         var urlRequest = URLRequest(url: url)
         headers?.forEach {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
-    
         let dataTask = requestable.dataTask(with: urlRequest) { [weak self] data, response, error in
             self?.removeFromRelay(identifier)
             guard let response = response as? HTTPURLResponse, let data = data else {
