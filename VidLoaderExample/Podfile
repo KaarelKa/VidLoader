@@ -3,6 +3,6 @@ platform :ios, '12.0'
 target 'VidLoaderExample' do
   use_frameworks!
 
-pod 'VidLoader', :git => 'https://github.com/katerynapeikova/VidLoader.git'
+pod 'VidLoader', :git => 'https://github.com/KaarelKa/VidLoader.git'
 
 end

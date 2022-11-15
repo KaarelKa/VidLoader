@@ -29,11 +29,10 @@ extension AVAssetResourceLoadingRequest {
         }
     }
 
-    @objc func mockSetup(response: URLResponse, data: Data) {
+    @objc func mockSetup(response: URLResponse, data: Data, isEntireLengthAvailableOnDemand: Bool) {
         setupFuncDidCall = true
     }
-
-
+    
     static var contentInformationRequestAssociationKey: NSInteger = 1
     var contentInformationRequestStub: AVAssetResourceLoadingContentInformationRequest? {
         get {
@@ -44,11 +43,11 @@ extension AVAssetResourceLoadingRequest {
             objc_setAssociatedObject(self, &AVAssetResourceLoadingRequest.contentInformationRequestAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
-
+    
     @objc var mockContentInformationRequest: AVAssetResourceLoadingContentInformationRequest? {
         return contentInformationRequestStub
     }
-
+    
     static func mockWithCustomContentInfoRequest(with resourceLoader: AVAssetResourceLoader = .mock(),
                                                  requestInfo: NSDictionary = mockRequestInfo(),
                                                  requestID: Int = 1) -> AVAssetResourceLoadingRequest {
@@ -57,14 +56,14 @@ extension AVAssetResourceLoadingRequest {
                       requestID: requestID,
                       swizzleAction: { swizzle(className: self, original: #selector(getter: contentInformationRequest), new: #selector(getter: mockContentInformationRequest)) })
     }
-
+    
     static func mockWithCustomSetup(with resourceLoader: AVAssetResourceLoader = .mock(),
                                     requestInfo: NSDictionary = mockRequestInfo(),
                                     requestID: Int = 1) -> AVAssetResourceLoadingRequest {
         return create(with: resourceLoader,
                       requestInfo: requestInfo,
                       requestID: requestID,
-                      swizzleAction: { swizzle(className: self, original: #selector(setup(response:data:)), new: #selector(mockSetup(response:data:))) })
+                      swizzleAction: { swizzle(className: self, original: #selector(setup(response:data:isEntireLengthAvailableOnDemand:)), new: #selector(mockSetup(response:data:isEntireLengthAvailableOnDemand:))) })
     }
 
     static private func create(with resourceLoader: AVAssetResourceLoader = .mock(),
@@ -86,8 +85,7 @@ extension AVAssetResourceLoadingRequest {
             return request
         }
         method_setImplementation(initialInit, imp_implementationWithBlock(newBlock))
-        let newSelector = Selector(("new"))
-        perform(newSelector)
+        perform(Selector.defaultNew)
         
         return request
     }

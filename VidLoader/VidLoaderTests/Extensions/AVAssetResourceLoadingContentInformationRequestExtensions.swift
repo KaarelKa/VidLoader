@@ -5,10 +5,11 @@
 //  Created by Petre Plotnic on 25.09.22.
 //  Copyright © 2022 Petre. All rights reserved.
 //
+
 import AVFoundation
 
 extension AVAssetResourceLoadingContentInformationRequest {
-
+    
     static func mock(loadingRequest: AVAssetResourceLoadingRequest,
                      allowedContentTypes: NSArray?) -> AVAssetResourceLoadingContentInformationRequest {
         let finalSelector = Selector(("initWithLoadingRequest:allowedContentTypes:"))
@@ -26,7 +27,7 @@ extension AVAssetResourceLoadingContentInformationRequest {
         }
         method_setImplementation(initialInit, imp_implementationWithBlock(newBlock))
         perform(Selector.defaultNew)
-
+        
         return contentInformationRequest
     }
 }
